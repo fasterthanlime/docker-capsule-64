@@ -49,3 +49,8 @@ RUN \
         make install && \
         make distclean && \
         rm -rf ${DIR} 
+
+RUN curl -sL https://deb.nodesource.com/setup_7.x | bash - && apt-get install --quiet --yes nodejs
+
+RUN apt-get install --quiet --yes libpulse-dev
+
