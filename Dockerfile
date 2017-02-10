@@ -2,9 +2,8 @@ FROM tianon/debian:jessie
 
 RUN uname -a && apt-get update --quiet && apt-get install --quiet --yes netselect-apt
 RUN cd /etc/apt && netselect-apt && apt-get update
-RUN apt-get install --quiet --yes curl && curl -L https://storage.googleapis.com/golang/go1.7.4.linux-amd64.tar.gz | tar xz -C /usr/local
-RUN apt-get install --quiet --yes libgtk-3-dev
 RUN apt-get install --quiet --yes build-essential
+RUN apt-get install --quiet --yes cmake
 RUN apt-get install --quiet --yes git
 RUN apt-get install --quiet --yes autoconf automake bzip2 libtool nasm perl pkg-config python yasm zlib1g-dev
 
