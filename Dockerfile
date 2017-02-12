@@ -52,4 +52,5 @@ RUN \
 RUN curl -sL https://deb.nodesource.com/setup_7.x | bash - && apt-get install --quiet --yes nodejs
 
 RUN apt-get install --quiet --yes libpulse-dev
+RUN apt-get install --quiet --yes libx11-dev
 
