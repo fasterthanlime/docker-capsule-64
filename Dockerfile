@@ -34,7 +34,8 @@ RUN \
           --disable-asyncns --disable-tcpwrap --disable-lirc --disable-dbus --disable-bluez4 \
           --disable-bluez5 --disable-bluez5-ofono-headset --disable-bluez5-native-headset \
           --disable-hal-compat --disable-ipv6 --disable-openssl --disable-systemd-daemon \
-          --disable-systemd-login --disable-systemd-journal --disable-manpages --disable-per-user-esound-socket && \
+          --disable-systemd-login --disable-systemd-journal --disable-manpages --disable-per-user-esound-socket \
+          --without-caps && \
         make -j2 && \
         make install && \
         rm -rf ${DIR}
