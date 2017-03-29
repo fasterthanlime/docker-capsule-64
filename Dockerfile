@@ -11,7 +11,7 @@ RUN \
         SRC=/usr/capsule && \
         PKG_CONFIG_PATH=${SRC}/lib/pkgconfig && \
         SNDFILE_VERSION=1.0.27 && \
-        DIR=$(mkdtemp -d) && cd ${DIR} && \
+        DIR=$(mktemp -d) && cd ${DIR} && \
 # libsndfile http://www.mega-nerd.com/libsndfile/
         curl -sLO http://www.mega-nerd.com/libsndfile/files/libsndfile-${SNDFILE_VERSION}.tar.gz | \
         tar -zx --strip-components=1 && \
@@ -24,7 +24,7 @@ RUN \
         SRC=/usr/capsule && \
         PKG_CONFIG_PATH=${SRC}/lib/pkgconfig && \
         PULSE_VERSION=10.0 && \
-        DIR=$(mkdtemp -d) && cd ${DIR} && \
+        DIR=$(mktemp -d) && cd ${DIR} && \
 # pulseaudio https://www.freedesktop.org/wiki/Software/PulseAudio/
         curl -sLO https://freedesktop.org/software/pulseaudio/releases/pulseaudio-${PULSE_VERSION}.tar.xz | \
         tar -Jx --strip-components=1 && \
