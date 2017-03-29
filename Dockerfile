@@ -9,7 +9,7 @@ RUN apt-get install --quiet --yes autoconf automake bzip2 libtool nasm perl pkg-
 
 RUN \
         SRC=/usr/capsule && \
-        PKG_CONFIG_PATH=${SRC}/lib/pkgconfig && \
+        export PKG_CONFIG_PATH=${SRC}/lib/pkgconfig && \
         SNDFILE_VERSION=1.0.27 && \
         DIR=$(mktemp -d) && cd ${DIR} && \
 # libsndfile http://www.mega-nerd.com/libsndfile/
@@ -22,7 +22,7 @@ RUN \
 
 RUN \
         SRC=/usr/capsule && \
-        PKG_CONFIG_PATH=${SRC}/lib/pkgconfig && \
+        export PKG_CONFIG_PATH=${SRC}/lib/pkgconfig && \
         PULSE_VERSION=10.0 && \
         DIR=$(mktemp -d) && cd ${DIR} && \
 # pulseaudio https://www.freedesktop.org/wiki/Software/PulseAudio/
@@ -43,7 +43,7 @@ RUN \
 # inspired from https://github.com/jrottenberg/ffmpeg
 RUN \
         SRC=/usr/capsule && \
-        PKG_CONFIG_PATH=${SRC}/lib/pkgconfig && \
+        export PKG_CONFIG_PATH=${SRC}/lib/pkgconfig && \
         X264_VERSION=20170328-2245-stable && \
         DIR=$(mktemp -d) && cd ${DIR} && \
 ## x264 http://www.videolan.org/developers/x264.html
@@ -56,7 +56,7 @@ RUN \
 
 RUN \
         SRC=/usr/capsule && \
-        PKG_CONFIG_PATH=${SRC}/lib/pkgconfig && \
+        export PKG_CONFIG_PATH=${SRC}/lib/pkgconfig && \
         FFMPEG_VERSION=3.2.4 && \
         DIR=$(mktemp -d) && cd ${DIR} && \
 # ffmpeg https://ffmpeg.org/
