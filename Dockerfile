@@ -5,7 +5,7 @@ RUN cd /etc/apt && netselect-apt && apt-get update
 RUN apt-get install --quiet --yes build-essential
 RUN apt-get install --quiet --yes cmake
 RUN apt-get install --quiet --yes git
-RUN apt-get install --quiet --yes autoconf automake bzip2 libtool nasm perl pkg-config python yasm zlib1g-dev
+RUN apt-get install --quiet --yes autoconf automake bzip2 libtool nasm perl pkg-config python yasm zlib1g-dev intltool
 
 RUN \
         SRC=/usr/capsule && \
@@ -16,7 +16,7 @@ RUN \
         curl -sL http://www.mega-nerd.com/libsndfile/files/libsndfile-${SNDFILE_VERSION}.tar.gz | \
         tar -zx --strip-components=1 && \
         ./configure --prefix="${SRC}" --disable-sqlite --disable-alsa --disable-external-libs --disable-octave && \
-        make && \
+        make -j2 && \
         make install && \
         rm -rf ${DIR}
 
@@ -35,7 +35,7 @@ RUN \
           --disable-bluez5 --disable-bluez5-ofono-headset --disable-bluez5-native-headset \
           --disable-hal-compat --disable-ipv6 --disable-openssl --disable-systemd-daemon \
           --disable-systemd-login --disable-systemd-journal --disable-manpages --disable-per-user-esound-socket && \
-        make && \
+        make -j2 && \
         make install && \
         rm -rf ${DIR}
 
@@ -49,7 +49,7 @@ RUN \
         curl -sL https://ftp.videolan.org/pub/videolan/x264/snapshots/x264-snapshot-${X264_VERSION}.tar.bz2 | \
         tar -jx --strip-components=1 && \
         ./configure --prefix="${SRC}" --bindir="${SRC}/bin" --enable-pic --enable-shared --disable-cli && \
-        make && \
+        make -j2 && \
         make install && \
         rm -rf ${DIR}
 
@@ -78,7 +78,7 @@ RUN \
         --enable-nonfree \
         --disable-debug \
         --enable-small && \
-        make && \
+        make -j2 && \
         make install && \
         make distclean && \
         rm -rf ${DIR} 
