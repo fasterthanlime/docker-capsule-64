@@ -15,7 +15,7 @@ RUN \
 # libsndfile http://www.mega-nerd.com/libsndfile/
         curl -sL http://www.mega-nerd.com/libsndfile/files/libsndfile-${SNDFILE_VERSION}.tar.gz | \
         tar -zx --strip-components=1 && \
-        ./configure --prefix="${SRC}" --disable-sqlite --disable-alsa --disable-external-libs --disable-octave
+        ./configure --prefix="${SRC}" --disable-sqlite --disable-alsa --disable-external-libs --disable-octave && \
         make && \
         make install && \
         rm -rf ${DIR}
@@ -34,7 +34,7 @@ RUN \
           --disable-asyncns --disable-tcpwrap --disable-lirc --disable-dbus --disable-bluez4 \
           --disable-bluez5 --disable-bluez5-ofono-headset --disable-bluez5-native-headset \
           --disable-hal-compat --disable-ipv6 --disable-openssl --disable-systemd-daemon \
-          --disable-systemd-login --disable-systemd-journal --disable-manpages --disable-per-user-esound-socket
+          --disable-systemd-login --disable-systemd-journal --disable-manpages --disable-per-user-esound-socket && \
         make && \
         make install && \
         rm -rf ${DIR}
