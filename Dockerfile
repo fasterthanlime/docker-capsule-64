@@ -13,7 +13,7 @@ RUN \
         SNDFILE_VERSION=1.0.27 && \
         DIR=$(mktemp -d) && cd ${DIR} && \
 # libsndfile http://www.mega-nerd.com/libsndfile/
-        curl -sLO http://www.mega-nerd.com/libsndfile/files/libsndfile-${SNDFILE_VERSION}.tar.gz | \
+        curl -sL http://www.mega-nerd.com/libsndfile/files/libsndfile-${SNDFILE_VERSION}.tar.gz | \
         tar -zx --strip-components=1 && \
         ./configure --prefix="${SRC}" --disable-sqlite --disable-alsa --disable-external-libs --disable-octave
         make && \
@@ -26,7 +26,7 @@ RUN \
         PULSE_VERSION=10.0 && \
         DIR=$(mktemp -d) && cd ${DIR} && \
 # pulseaudio https://www.freedesktop.org/wiki/Software/PulseAudio/
-        curl -sLO https://freedesktop.org/software/pulseaudio/releases/pulseaudio-${PULSE_VERSION}.tar.xz | \
+        curl -sL https://freedesktop.org/software/pulseaudio/releases/pulseaudio-${PULSE_VERSION}.tar.xz | \
         tar -Jx --strip-components=1 && \
         ./configure --prefix="${SRC}" --disable-x11 --disable-tests --disable-oss-wrapper \
           --disable-coreaudio-output --disable-esound --disable-solaris --disable-waveout \
@@ -59,8 +59,8 @@ RUN \
         FFMPEG_VERSION=3.2.4 && \
         DIR=$(mktemp -d) && cd ${DIR} && \
 # ffmpeg https://ffmpeg.org/
-        curl -sLO https://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.gz && \
-        tar -zx --strip-components=1 -f ffmpeg-${FFMPEG_VERSION}.tar.gz && \
+        curl -sL https://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.gz | \
+        tar -zx --strip-components=1 && \
         ./configure --prefix="${SRC}" \
         --extra-cflags="-I${SRC}/include" \
         --extra-ldflags="-L${SRC}/lib" \
