@@ -87,4 +87,5 @@ RUN \
 RUN curl -sL https://deb.nodesource.com/setup_7.x | bash - && apt-get install --quiet --yes nodejs
 
 RUN apt-get install --quiet --yes libx11-dev
+RUN apt-get install --quiet --yes libasound2-dev
 
