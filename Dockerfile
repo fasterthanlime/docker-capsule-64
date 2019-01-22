@@ -2,10 +2,21 @@ FROM tianon/debian:jessie
 
 RUN uname -a && apt-get update --quiet && apt-get install --quiet --yes netselect-apt
 RUN cd /etc/apt && netselect-apt && apt-get update
+RUN apt-get dist-upgrade --quiet --yes
+
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && apt-get install --quiet --yes nodejs
+
 RUN apt-get install --quiet --yes build-essential
 RUN apt-get install --quiet --yes cmake
 RUN apt-get install --quiet --yes git
 RUN apt-get install --quiet --yes autoconf automake bzip2 libtool nasm perl pkg-config python yasm zlib1g-dev intltool
+RUN apt-get install --quiet --yes libx11-dev
+RUN apt-get install --quiet --yes libasound2-dev
+RUN apt-get install --quiet --yes zip p7zip-full
+
+RUN \
+	curl -sL https://dl.google.com/go/go1.11.4.linux-amd64.tar.gz | \
+	tar -zx -C /usr/local
 
 RUN \
         SRC=/usr/capsule && \
@@ -47,7 +58,7 @@ RUN \
         X264_VERSION=20170328-2245-stable && \
         DIR=$(mktemp -d) && cd ${DIR} && \
 ## x264 http://www.videolan.org/developers/x264.html
-        curl -sL https://ftp.videolan.org/pub/videolan/x264/snapshots/x264-snapshot-${X264_VERSION}.tar.bz2 | \
+        curl -sL http://ftp.videolan.org/pub/videolan/x264/snapshots/x264-snapshot-${X264_VERSION}.tar.bz2 | \
         tar -jx --strip-components=1 && \
         ./configure --prefix="${SRC}" --bindir="${SRC}/bin" --enable-pic --enable-shared --disable-cli && \
         make -j2 && \
@@ -84,9 +95,5 @@ RUN \
         make distclean && \
         rm -rf ${DIR} 
 
-RUN curl -sL https://deb.nodesource.com/setup_7.x | bash - && apt-get install --quiet --yes nodejs
-
-RUN apt-get install --quiet --yes libx11-dev
-RUN apt-get install --quiet --yes libasound2-dev
-RUN apt-get install --quiet --yes zip p7zip-full
+ENV PATH = "${PATH}:/usr/local/go/bin"
 
