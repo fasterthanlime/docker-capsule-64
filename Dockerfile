@@ -98,5 +98,6 @@ RUN \
 ENV PATH "${PATH}:/usr/local/go/bin"
 
 RUN apt-get install --quiet --yes libgl1
+RUN apt-get install --quiet --yes libgl1-mesa-dev
 
 
