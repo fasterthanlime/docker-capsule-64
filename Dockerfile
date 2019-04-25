@@ -14,3 +14,6 @@ RUN apt-get install --quiet --yes \
     yasm nasm \
     libgl1 libgl1-mesa-dev
 
+RUN curl https://ftp.osuosl.org/pub/blfs/conglomeration/nasm/nasm-2.14.02.tar.xz | tar xJ && \
+    cd nasm-2.14.02 && ./configure --host=i686-pc-linux-gnu && make -j all install
+
