@@ -10,7 +10,7 @@ RUN apt-get install --quiet --yes \
     git \
     build-essential cmake autoconf automake libtool pkg-config \
     python perl \
-    bzip2 zlib2g-dev \
+    bzip2 zlib1g-dev \
     yasm nasm \
     libgl1 libgl1-mesa-dev
 
