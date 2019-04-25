@@ -8,7 +8,7 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && apt-get install --
 
 RUN apt-get install --quiet --yes \
     git \
-    build-essential cmake autoconf automake libtool pkg-config
+    build-essential cmake autoconf automake libtool pkg-config \
     python perl \
     bzip2 zlib2g-dev \
     yasm nasm \
