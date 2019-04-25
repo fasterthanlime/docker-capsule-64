@@ -1,4 +1,4 @@
-FROM tianon/debian:jessie
+FROM amd64/debian:jessie-slim
 
 RUN uname -a && apt-get update --quiet && apt-get install --quiet --yes netselect-apt
 RUN cd /etc/apt && netselect-apt && apt-get update
