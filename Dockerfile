@@ -1,9 +1,9 @@
-FROM amd64/debian:jessie-slim
+FROM amd64/ubuntu:18.04
 
-RUN uname -a && apt-get update --quiet && apt-get install --quiet --yes netselect-apt
-RUN cd /etc/apt && netselect-apt && apt-get update
+RUN uname -a && apt-get update --quiet
 RUN apt-get dist-upgrade --quiet --yes
 
+RUN apt-get install --quiet --yes curl
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && apt-get install --quiet --yes nodejs
 
 RUN apt-get install --quiet --yes \
@@ -25,4 +25,10 @@ RUN \
 ENV PATH "${PATH}:/usr/local/go/bin"
 
 RUN apt-get install --quiet --yes zip p7zip-full
+
+# install rust toolchain
+RUN curl https://sh.rustup.rs -sSf | \
+    sh -s -- --default-toolchain stable -y
+
+RUN apt-get install --quiet --yes libwebkit2gtk-4.0-dev
 
